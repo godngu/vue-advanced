@@ -1,23 +1,22 @@
 <template>
     <div>
-        <div v-for="item in ask">{{item.title}}</div>
+        <div v-for="item in store.state.ask">{{item.title}}</div>
     </div>
 </template>
 
 <script>
-import {fetchAskList} from "@/api";
+import {useStore} from 'vuex';
 
 export default {
     name: "AskView",
-    data() {
-        return {
-            ask: []
-        }
-    },
     created() {
-        fetchAskList()
-        .then(response => this.ask = response.data)
-        .catch()
+        this.$store.dispatch('FETCH_ASK');
+    },
+    setup() {
+        const store = useStore();
+        return {
+            store
+        }
     }
 }
 </script>

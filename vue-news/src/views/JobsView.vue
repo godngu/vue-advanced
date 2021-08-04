@@ -1,23 +1,22 @@
 <template>
     <div>
-        <div v-for="job in jobs">{{job.title}}</div>
+        <div v-for="job in store.state.jobs">{{job.title}}</div>
     </div>
 </template>
 
 <script>
-import {fetchJobsList} from "@/api";
+import {useStore} from 'vuex';
 
 export default {
     name: "JobsView",
-    data() {
-        return {
-            jobs: []
-        }
-    },
     created() {
-        fetchJobsList()
-        .then(response => this.jobs = response.data)
-        .catch()
+        this.$store.dispatch('FETCH_JOBS');
+    },
+    setup() {
+        const store = useStore();
+        return {
+            store
+        }
     }
 
 }

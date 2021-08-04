@@ -1,7 +1,6 @@
 <template>
     <div>
         <div v-for="item in store.state.news">{{ item.title }}</div>
-        <div>news</div>
     </div>
 </template>
 
@@ -15,8 +14,7 @@ export default {
     setup() {
         const store = useStore();
         return {
-            store,
-            news: store.state.news
+            store
         }
     }
 }
