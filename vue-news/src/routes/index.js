@@ -26,15 +26,15 @@ const routes = [
         component: JobsView
     },
     {
-        path: '/item',
-        name: 'Item',
-        component: ItemView
-    },
-    {
         path: '/user/:id',
         name: 'User',
         component: UserView
-    }
+    },
+    {
+        path: '/item/:id',
+        name: 'Item',
+        component: ItemView
+    },
 ]
 export const router = createRouter({
     history: createWebHistory(),

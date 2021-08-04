@@ -1,5 +1,5 @@
 import {
-    fetchAskList,
+    fetchAskList, fetchItem,
     fetchJobsList,
     fetchNewsList,
     fetchUserInfo
@@ -33,11 +33,19 @@ export default {
             console.log(error);
         })
     },
-    FETCH_USER({commit}, id) {
-        fetchUserInfo(id)
+    FETCH_USER({commit}, userId) {
+        fetchUserInfo(userId)
         .then(({data}) => {
-            console.log(data);
             commit('SET_USER', data);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    },
+    FETCH_ITEM({commit}, itemId) {
+        fetchItem(itemId)
+        .then(({data}) => {
+            commit('SET_ITEM', data);
         })
         .catch(error => {
             console.log(error);

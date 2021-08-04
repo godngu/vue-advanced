@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import {useStore, mapGetters} from 'vuex';
+import { mapGetters} from 'vuex';
 
 export default {
     name: "UserView",
@@ -17,14 +17,8 @@ export default {
         })
     },
     created() {
-        const id = this.$route.params.id;
-        this.$store.dispatch('FETCH_USER', id);
-    },
-    setup() {
-        const store = useStore();
-        return {
-            store
-        }
+        const userId = this.$route.params.id;
+        this.$store.dispatch('FETCH_USER', userId);
     }
 }
 </script>

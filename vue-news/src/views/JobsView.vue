@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import {useStore, mapGetters} from 'vuex';
+import { mapGetters} from 'vuex';
 
 export default {
     name: "JobsView",
@@ -22,12 +22,6 @@ export default {
     created() {
         this.$store.dispatch('FETCH_JOBS');
     },
-    setup() {
-        const store = useStore();
-        return {
-            store
-        }
-    }
 
 }
 </script>
