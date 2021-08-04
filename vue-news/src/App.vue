@@ -1,7 +1,11 @@
 <template>
     <div id="app">
         <tool-bar></tool-bar>
-        <router-view></router-view>
+        <router-view v-slot="{Component}">
+            <transition name="page">
+                <component :is="Component"></component>
+            </transition>
+        </router-view>
     </div>
 </template>
 
@@ -20,12 +24,12 @@ body {
     padding: 0;
     margin: 0;
 }
-/*#app {*/
-/*  font-family: Avenir, Helvetica, Arial, sans-serif;*/
-/*  -webkit-font-smoothing: antialiased;*/
-/*  -moz-osx-font-smoothing: grayscale;*/
-/*  text-align: center;*/
-/*  color: #2c3e50;*/
-/*  margin-top: 60px;*/
-/*}*/
+
+/* Router Transition */
+.page-enter-active, .page-leave-active {
+    transition: opacity .5s;
+}
+.page-enter, .page-leave-to /* .page-leave-active below version 2.1.8 */ {
+    opacity: 0;
+}
 </style>
