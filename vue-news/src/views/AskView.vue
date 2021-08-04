@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div v-for="item in store.state.ask">{{item.title}}</div>
+        <div v-for="item in fetchedAsk">{{item.title}}</div>
     </div>
 </template>
 
 <script>
-import {useStore} from 'vuex';
+import {useStore, mapGetters} from 'vuex';
 
 export default {
     name: "AskView",
@@ -17,6 +17,14 @@ export default {
         return {
             store
         }
+    },
+    computed: {
+        // ...mapState({
+        //     ask: state => state.ask
+        // })
+        ...mapGetters({
+            fetchedAsk: 'fetchedAsk'
+        })
     }
 }
 </script>

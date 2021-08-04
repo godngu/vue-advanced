@@ -7,6 +7,11 @@ export default createStore({
         jobs: [],
         ask: []
     },
+    getters: {
+        fetchedAsk(state) {
+            return state.ask;
+        }
+    },
     mutations: {
         SET_NEWS(state, news) {
             state.news = news;
