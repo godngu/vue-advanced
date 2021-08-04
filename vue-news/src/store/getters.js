@@ -7,5 +7,8 @@ export default {
     },
     fetchedAsk(state) {
         return state.ask;
+    },
+    getUser(state) {
+        return state.user;
     }
 }
