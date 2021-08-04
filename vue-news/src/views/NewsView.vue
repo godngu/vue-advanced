@@ -1,13 +1,19 @@
 <template>
     <div>
-        <div v-for="item in store.state.news">{{ item.title }}</div>
+        <div v-for="item in fetchedNews">{{ item.title }}</div>
     </div>
 </template>
 
 <script>
-import {useStore} from 'vuex';
+import {useStore, mapGetters} from 'vuex';
 
 export default {
+    name: "NewsView",
+    computed: {
+        ...mapGetters({
+            fetchedNews: 'fetchedNews'
+        })
+    },
     created() {
         this.$store.dispatch('FETCH_NEWS');
     },
