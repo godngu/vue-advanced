@@ -1,19 +1,15 @@
 <template>
     <div>
         <section>
-            <div class="user-container">
-                <div>
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="user-description">
-                    <router-link :to="`/user/${getItem.user}`">
-                        {{ getItem.user }}
-                    </router-link>
-                    <div class="time">
-                        {{ getItem.time_ago }}
-                    </div>
-                </div>
-            </div>
+            <!-- 사용자 정보 -->
+            <user-profile :info="getItem">
+                <template v-slot:username>
+                    <div>{{ getItem.user }}</div>
+                </template>
+                <template v-slot:time>{{ getItem.time_ago }}</template>
+            </user-profile>
+        </section>
+        <section>
             <h2>{{ getItem.title }}</h2>
         </section>
         <section>
@@ -25,9 +21,11 @@
 
 <script>
 import {mapGetters} from 'vuex';
+import UserProfile from "@/components/UserProfile";
 
 export default {
     name: "ItemView",
+    components: {UserProfile},
     computed: {
         ...mapGetters({
             getItem: 'getItem'
