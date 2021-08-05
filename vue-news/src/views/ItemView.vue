@@ -4,9 +4,14 @@
             <!-- 사용자 정보 -->
             <user-profile :info="getItem">
                 <template v-slot:username>
-                    <div>{{ getItem.user }}</div>
+                    <router-link :to="`/user/${getItem.user}`">
+                        {{ getItem.user }}
+                    </router-link>
                 </template>
-                <template v-slot:time>{{ getItem.time_ago }}</template>
+
+                <template v-slot:time>
+                    {{ 'Posted ' + getItem.time_ago }}
+                </template>
             </user-profile>
         </section>
         <section>

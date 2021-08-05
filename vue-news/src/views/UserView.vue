@@ -4,9 +4,11 @@
             <template v-slot:username>
                 <div>{{ getUser.id }}</div>
             </template>
-            <template v-slot:time>{{ getUser.created }}</template>
+            <template v-slot:time>
+                <span>{{ 'Joined ' + getUser.created }}, </span>
+            </template>
             <template v-slot:karma>
-                <div>{{ getUser.karma }}</div>
+                <span>{{ getUser.karma }}</span>
             </template>
         </user-profile>
     </div>
