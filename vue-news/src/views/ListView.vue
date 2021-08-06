@@ -8,10 +8,13 @@
 import ListItem from "@/components/ListItem";
 
 export default {
-    name: "AskView",
-    components: {ListItem},
+    name: "ListView",
+    components: {
+        ListItem
+    }
 }
 </script>
 
 <style scoped>
+
 </style>

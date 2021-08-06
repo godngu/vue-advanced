@@ -43,33 +43,37 @@ export default {
         ...mapGetters({
             fetchedNews: 'fetchedNews',
             fetchedAsk: 'fetchedAsk',
-            fetchedJobs: 'fetchedJobs'
+            fetchedJobs: 'fetchedJobs',
+            fetchedItems: 'fetchedItems'
         }),
         listItems() {
             const name = this.$route.name;
             console.log('name', name);
 
-            if (name === 'news') {
-                return this.fetchedNews;
-            } else if (name === 'ask') {
-                return this.fetchedAsk;
-            } else if (name === 'jobs') {
-                return this.fetchedJobs;
-            } else {
-                return [];
-            }
+            // store의 state에서 데이터 가져 오게끔 수정하자 (useStore)
+            return this.fetchedItems;
+
+            // if (name === 'news') {
+            //     return this.fetchedNews;
+            // } else if (name === 'ask') {
+            //     return this.fetchedAsk;
+            // } else if (name === 'jobs') {
+            //     return this.fetchedJobs;
+            // } else {
+            //     return [];
+            // }
         },
     },
     created() {
-        const name = this.$route.name;
-
-        if (name === 'news') {
-            this.$store.dispatch('FETCH_NEWS');
-        } else if (name === 'ask') {
-            this.$store.dispatch('FETCH_ASK');
-        } else if (name === 'jobs') {
-            this.$store.dispatch('FETCH_JOBS');
-        }
+        // const name = this.$route.name;
+        //
+        // if (name === 'news') {
+        //     this.$store.dispatch('FETCH_NEWS');
+        // } else if (name === 'ask') {
+        //     this.$store.dispatch('FETCH_ASK');
+        // } else if (name === 'jobs') {
+        //     this.$store.dispatch('FETCH_JOBS');
+        // }
     }
 }
 </script>
