@@ -6,6 +6,36 @@ import {
 } from "@/api";
 
 export default {
+    FETCH_NEWS(response) {
+        fetchNewsList()
+        .then(({data}) => {
+            response.commit('SET_NEWS', data);
+            return response;
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    },
+    FETCH_JOBS(response) {
+        fetchJobsList()
+        .then(({data}) => {
+            response.commit('SET_JOBS', data);
+            return response;
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    },
+    FETCH_ASK(response) {
+        fetchAskList()
+        .then(({data}) => {
+            response.commit('SET_ASK', data);
+            return response;
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    },
     FETCH_USER({commit}, userId) {
         fetchUserInfo(userId)
         .then(({data}) => {
@@ -26,7 +56,6 @@ export default {
     },
 
     FETCH_LIST(response, pageName) {
-        console.log('FETCH_LIST', pageName);
         fetchList(pageName)
         .then(({data}) => {
             response.commit('SET_LIST', data);
