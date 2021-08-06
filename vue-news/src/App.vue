@@ -6,16 +6,40 @@
                 <component :is="Component"></component>
             </transition>
         </router-view>
+        <spinner :loading="loadingStatus"></spinner>
     </div>
 </template>
 
 <script>
 import ToolBar from "@/components/ToolBar";
+import Spinner from "@/components/Spinner";
 
 export default {
     components: {
-        ToolBar
+        ToolBar, Spinner
     },
+    data() {
+        return {
+            loadingStatus: false,
+        }
+    },
+    methods: {
+        startSpinner() {
+            this.loadingStatus = true;
+        },
+        endSpinner() {
+            this.loadingStatus = false;
+        }
+    },
+    created() {
+        // bus.$on('start:spinner', this.startSpinner)
+        this.emitter.on('start:spinner', this.startSpinner);
+        this.emitter.on('end:spinner', this.endSpinner);
+    },
+    onBeforeUnmount() {
+        this.emitter.off('start:spinner', this.startSpinner);
+        this.emitter.off('end:spinner', this.endSpinner);
+    }
 }
 </script>
 
