@@ -1,8 +1,9 @@
 export default {
-    news: [],
-    jobs: [],
-    ask: [],
+    // news: [],
+    // jobs: [],
+    // ask: [],
     list: [],
     user: {},
-    item: {}
+    item: {},
+    spinnerStatus: false
 }

@@ -7,5 +7,8 @@ export default {
     },
     fetchedItems(state) {
         return state.list;
+    },
+    getSpinnerStatus(state) {
+        return state.spinnerStatus;
     }
 }

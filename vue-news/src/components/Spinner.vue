@@ -1,5 +1,5 @@
 <template>
-    <div class="lds-facebook" v-if="loading">
+    <div class="lds-facebook" v-if="getSpinnerStatus">
         <div>
         </div>
         <div>
@@ -10,14 +10,18 @@
 </template>
 
 <script>
+import {useStore, mapGetters} from 'vuex';
 export default {
     name: "Spinner",
-    props: {
-        loading: {
-            type: Boolean,
-            required: true,
-        },
+    computed: {
+        ...mapGetters({
+            getSpinnerStatus: 'getSpinnerStatus'
+        })
     },
+    created() {
+        const store = useStore();
+        const spinnerStatus = store.state.spinnerStatus;
+    }
 }
 </script>
 

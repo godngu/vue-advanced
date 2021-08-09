@@ -15,6 +15,11 @@ export default {
         state.item = item;
     },
     SET_LIST(state, list) {
+        console.log('SET_LIST');
         state.list = list;
+    },
+    SET_SPINNER_STATUS(state, spinnerStatus) {
+        // console.log('SET_SPINNER_STATUS', spinnerStatus);
+        state.spinnerStatus = spinnerStatus;
     }
 }

@@ -6,63 +6,65 @@ import {
 } from "@/api";
 
 export default {
-    FETCH_NEWS(response) {
-        fetchNewsList()
-        .then(({data}) => {
-            response.commit('SET_NEWS', data);
-            return response;
-        })
-        .catch(error => {
-            console.log(error);
-        })
+    FETCH_NEWS({commit}) {
+        return fetchNewsList()
+            .then(({data}) => {
+                commit('SET_NEWS', data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
     },
-    FETCH_JOBS(response) {
-        fetchJobsList()
-        .then(({data}) => {
-            response.commit('SET_JOBS', data);
-            return response;
-        })
-        .catch(error => {
-            console.log(error);
-        });
+    FETCH_ASK({commit}) {
+        return fetchAskList()
+            .then(({data}) => {
+                commit('SET_ASK', data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
     },
-    FETCH_ASK(response) {
-        fetchAskList()
-        .then(({data}) => {
-            response.commit('SET_ASK', data);
-            return response;
-        })
-        .catch(error => {
-            console.log(error);
-        })
+    FETCH_JOBS({commit}) {
+        return fetchJobsList()
+            .then(({data}) => {
+                commit('SET_JOBS', data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
     },
     FETCH_USER({commit}, userId) {
-        fetchUserInfo(userId)
-        .then(({data}) => {
-            commit('SET_USER', data);
-        })
-        .catch(error => {
-            console.log(error);
-        })
+        return fetchUserInfo(userId)
+            .then(({data}) => {
+                commit('SET_USER', data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
     },
     FETCH_ITEM({commit}, itemId) {
-        fetchItem(itemId)
-        .then(({data}) => {
-            commit('SET_ITEM', data);
-        })
-        .catch(error => {
-            console.log(error);
-        })
+        return fetchItem(itemId)
+            .then(({data}) => {
+                commit('SET_ITEM', data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
     },
 
-    FETCH_LIST(response, pageName) {
-        fetchList(pageName)
-        .then(({data}) => {
-            response.commit('SET_LIST', data);
-            return response;
-        })
-        .catch(error => {
-            console.log(error);
-        });
+    FETCH_LIST({commit}, pageName) {
+        console.log('FETCH_LIST');
+        return fetchList(pageName)
+            .then(response => {
+                commit('SET_LIST', response.data);
+                return response;
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    },
+
+    TOGGLE_SPINNER({commit}, spinnerStatus) {
+        commit('SET_SPINNER_STATUS', spinnerStatus);
     }
 }

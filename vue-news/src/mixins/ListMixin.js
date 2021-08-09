@@ -2,15 +2,22 @@ import {useStore} from "vuex";
 
 export default {
 
-    created() {
+    mounted() {
         const store = useStore();
-        this.emitter.emit('start:spinner');
-        store.dispatch('FETCH_LIST', this.$route.name)
-        .then(() => {
-            this.emitter.emit('end:spinner');
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-    }
+        store.commit('SET_SPINNER_STATUS', false);
+    },
+
+    // created() {
+    //     const store = useStore();
+    //     store.commit('SET_SPINNER_STATUS', true);
+    //     store.dispatch('FETCH_LIST', this.$route.name)
+    //     .then(() => {
+    //         console.log('5');
+    //         console.log('fetched');
+    //         store.commit('SET_SPINNER_STATUS', false);
+    //     })
+    //     .catch((error) => {
+    //         console.log(error);
+    //     })
+    // }
 }
