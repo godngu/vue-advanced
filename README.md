@@ -31,4 +31,5 @@ $ vue create async-await
 $ vue create common
 $ vue create slots
 $ vue create controlled
+$ vue create renderless
 ```
