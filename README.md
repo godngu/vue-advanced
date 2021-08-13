@@ -33,3 +33,18 @@ $ vue create slots
 $ vue create controlled
 $ vue create renderless
 ```
+
+
+## 프로젝트 배포
+- [Netlify](https://www.netlify.com/) 퍼블리싱 서비스  
+- [Vue CLI 배포 설명 페이지 링크](https://cli.vuejs.org/guide/deployment.html#gitlab-pages)
+
+### Build Settings
+| 항목 | 입력 |
+| --- | --- |  
+| Repository | github.com/godngu/vue-advanced |  
+| Base Directory | vue-news |
+| Build command | npm run build
+| Publish directory | vue-news/dist |
+
+  
