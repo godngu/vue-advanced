@@ -18,6 +18,10 @@ export default {
     components: {
         ToolBar, Spinner
     },
+    created() {
+        // 환경변수 사용
+        console.log(process.env.VUE_APP_TITLE);
+    }
 }
 </script>
 

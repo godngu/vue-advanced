@@ -47,4 +47,12 @@ $ vue create renderless
 | Build command | npm run build
 | Publish directory | vue-news/dist |
 
+
+## 환경변수 사용
+- `.env` 파일 생성
+- `key=value` 형태로 기입한다.
+- `VUE_` prefix를 붙이면 별도의 설정 없이 컴포넌트에서 호출이 가능하다.
+```javascript
+console.log(process.env.VUE_APP_TITLE);
+```
   
